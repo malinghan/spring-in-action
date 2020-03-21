@@ -1,4 +1,4 @@
-package geektime.spring.data.simplejdbcdemo;
+package com.someecho;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -14,8 +14,10 @@ import java.util.List;
 
 @Repository
 public class BatchFooDao {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 

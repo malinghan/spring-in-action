@@ -15,6 +15,10 @@
         <module>spring-boot-aop</module>
         <module>spring-web-mvc</module>
         <module>hello-spring</module>
+        <module>spring-jdbc</module>
+        <module>springboot-jdbc</module>
+        <module>muilt-datasoure</module>
+        <module>spring-datasource</module>
     </modules>
 
     <properties>

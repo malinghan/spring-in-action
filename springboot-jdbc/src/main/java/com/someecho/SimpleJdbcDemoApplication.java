@@ -1,4 +1,4 @@
-package geektime.spring.data.simplejdbcdemo;
+package com.someecho;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +39,11 @@ public class SimpleJdbcDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // 测试插入数据
         fooDao.insertData();
+        // 测试批量插入数据
         batchFooDao.batchInsert();
+        // 测试查询数据
         fooDao.listData();
     }
 

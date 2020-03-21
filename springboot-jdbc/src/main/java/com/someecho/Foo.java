@@ -1,4 +1,4 @@
-package geektime.spring.data.simplejdbcdemo;
+package com.someecho;
 
 import lombok.Builder;
 import lombok.Data;
