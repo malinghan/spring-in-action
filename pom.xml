@@ -19,6 +19,7 @@
         <module>springboot-jdbc</module>
         <module>muilt-datasoure</module>
         <module>spring-datasource</module>
+        <module>spring-transaction</module>
     </modules>
 
     <properties>

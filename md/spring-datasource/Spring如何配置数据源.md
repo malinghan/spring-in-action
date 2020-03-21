@@ -18,12 +18,4 @@ private DataSource dataSource;
 ```
 此时DataSourceAutoConfiguration就会自动将属性传给dataSource
 
-可以通过 actuator/beans验证
-
-## 配置多数据源
-
-```
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
-        DataSourceTransactionManagerAutoConfiguration.class,
-        JdbcTemplateAutoConfiguration.class})
-```
+可以通过 localhost:8080/actuator/beans验证
