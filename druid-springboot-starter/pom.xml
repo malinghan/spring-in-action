@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>druid-springboot-starter</artifactId>
+    <version>1.1.18</version>
     <properties>
         <druid.version>1.1.18</druid.version>
     </properties>
@@ -67,7 +68,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.10</version>
+            <version>1.1.18</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

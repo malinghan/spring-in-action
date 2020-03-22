@@ -31,7 +31,7 @@ public class DruidStatViewServletConfiguration {
     public ServletRegistrationBean statViewServletRegistrationBean(DruidStatProperties properties) {
         DruidStatProperties.StatViewServlet config = properties.getStatViewServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean();
-        registrationBean.setServlet((Servlet) new DruidStatProperties.StatViewServlet());
+        registrationBean.setServlet(new StatViewServlet());
         registrationBean.addUrlMappings(config.getUrlPattern() != null ? config.getUrlPattern() : "/druid/*");
         if (config.getAllow() != null) {
             registrationBean.addInitParameter("allow", config.getAllow());
