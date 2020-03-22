@@ -1,8 +1,8 @@
-package geektime.spring.data.mongodemo;
+package com.someecho.data;
 
 import com.mongodb.client.result.UpdateResult;
-import geektime.spring.data.mongodemo.converter.MoneyReadConverter;
-import geektime.spring.data.mongodemo.model.Coffee;
+import com.someecho.data.converter.MoneyReadConverter;
+import com.someecho.data.model.Coffee;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
@@ -42,6 +42,13 @@ public class MongoDemoApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		/**
+		 * 创建了一个Coffee,
+		 * name:espresso
+		 * price:20.0CNY
+		 * createTime:new Date()
+		 * updateTime new Date()
+		 */
 		Coffee espresso = Coffee.builder()
 				.name("espresso")
 				.price(Money.of(CurrencyUnit.of("CNY"), 20.0))
@@ -50,20 +57,38 @@ public class MongoDemoApplication implements ApplicationRunner {
 		Coffee saved = mongoTemplate.save(espresso);
 		log.info("Coffee {}", saved);
 
+		/**
+		 * 查询Coffee，参数为
+		 * name = espresso
+		 */
 		List<Coffee> list = mongoTemplate.find(
 				Query.query(Criteria.where("name").is("espresso")), Coffee.class);
 		log.info("Find {} Coffee", list.size());
 		list.forEach(c -> log.info("Coffee {}", c));
 
+
 		Thread.sleep(1000); // 为了看更新时间
+
+		/**
+		 * 更新Coffee,条件name=espresso,
+		 * 内容: price = 30CNY
+		 * updateTime: currentDate
+		 */
 		UpdateResult result = mongoTemplate.updateFirst(query(where("name").is("espresso")),
 				new Update().set("price", Money.ofMajor(CurrencyUnit.of("CNY"), 30))
 						.currentDate("updateTime"),
 				Coffee.class);
 		log.info("Update Result: {}", result.getModifiedCount());
+
+		/**
+		 * 查询更新结果
+		 */
 		Coffee updateOne = mongoTemplate.findById(saved.getId(), Coffee.class);
 		log.info("Update Result: {}", updateOne);
 
+		/**
+		 * 删除COffee
+		 */
 		mongoTemplate.remove(updateOne);
 	}
 }

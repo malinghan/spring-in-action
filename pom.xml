@@ -20,6 +20,10 @@
         <module>muilt-datasoure</module>
         <module>spring-datasource</module>
         <module>spring-transaction</module>
+        <module>spring-druid</module>
+        <module>druid-springboot-starter</module>
+        <module>spring-data-mongodb</module>
+        <module>spring-date-mongo-repository</module>
     </modules>
 
     <properties>

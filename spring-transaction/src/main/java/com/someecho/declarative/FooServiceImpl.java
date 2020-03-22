@@ -1,4 +1,4 @@
-package geektime.spring.data.declarativetransactiondemo;
+package com.someecho.declarative;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -14,12 +14,28 @@ druid.stat.logSlowSql-true
 druid.stat.slowSqlMills=3000
 ```
 ### testXXX的含义
-
+- 用在循环获取连接时的策略
 - DruidDataSource#getConnectionDirect
+  - test-on-borrow 连接复用检测,如果不能使用，则丢弃
+  - test-on-return 连接返回检测,如果不能使用，则丢弃
+  - test-while-idle 连接闲置检测,,如果不能使用，则丢弃
 ```
 spring.datasource.druid.test-on-borrow=true
 spring.datasource.druid.test-on-return=true
 spring.datasource.druid.test-while-idle=true
+```
+### filter的含义
+```
+  public DruidPooledConnection getConnection(long maxWaitMillis) throws SQLException {
+        init();
+
+        if (filters.size() > 0) {
+            FilterChainImpl filterChain = new FilterChainImpl(this);
+            return filterChain.dataSource_connect(this, maxWaitMillis);
+        } else {
+            return getConnectionDirect(maxWaitMillis);
+        }
+    }
 ```
 
 ### 注意事项

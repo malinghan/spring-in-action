@@ -1,4 +1,4 @@
-package geektime.spring.data.druiddemo;
+package com.someecho;
 
 import com.alibaba.druid.filter.FilterChain;
 import com.alibaba.druid.filter.FilterEventAdapter;

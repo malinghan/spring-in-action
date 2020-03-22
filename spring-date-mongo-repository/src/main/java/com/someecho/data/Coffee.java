@@ -1,4 +1,4 @@
-package com.someecho.data.model;
+package com.someecho.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

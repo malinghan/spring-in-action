@@ -34,3 +34,8 @@ www.mongodb.com
 - CrudRepository<T,ID>
 ```
 
+
+### MongoAutoConfiguration
+- MongoClient
+- MongoProperties
+

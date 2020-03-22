@@ -1,4 +1,4 @@
-package geektime.spring.data.declarativetransactiondemo;
+package com.someecho.declarative;
 
 public class RollbackException extends Exception {
 }

@@ -1,4 +1,4 @@
-package geektime.spring.data.declarativetransactiondemo;
+package com.someecho.declarative;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
