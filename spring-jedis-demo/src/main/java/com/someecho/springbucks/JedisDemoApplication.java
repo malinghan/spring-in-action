@@ -40,8 +40,9 @@ public class JedisDemoApplication implements ApplicationRunner {
     private CoffeeService coffeeService;
 
     @Autowired
-    private JedisPool jedisPool;  //
+    private JedisPool jedisPool;
 
+    //可以自己重写redis配置
     @Autowired
     private JedisPoolConfig jedisPoolConfig;
 
@@ -80,6 +81,7 @@ public class JedisDemoApplication implements ApplicationRunner {
         log.info(jedisPoolConfig.toString());
         /**
          * 获取数据源,查询所以coffee，然后放入redis缓存中，已Hash方式
+         *  springbucks-menu -> name:Money
          */
         try (Jedis jedis = jedisPool.getResource()) {
             coffeeService.findAllCoffee().forEach(c -> {
@@ -87,6 +89,8 @@ public class JedisDemoApplication implements ApplicationRunner {
                         c.getName(),
                         Long.toString(c.getPrice().getAmountMinorLong()));
             });
+            //设置过期时间
+            jedis.expire("springbucks-menu",60);
 
             //查询redis的存储结构
             Map<String, String> menu = jedis.hgetAll("springbucks-menu");

@@ -25,6 +25,7 @@
         <module>spring-data-mongodb</module>
         <module>spring-date-mongo-repository</module>
         <module>spring-jedis-demo</module>
+        <module>spring-redis-lettuce</module>
     </modules>
 
     <properties>
