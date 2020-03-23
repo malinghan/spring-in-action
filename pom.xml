@@ -24,6 +24,7 @@
         <module>druid-springboot-starter</module>
         <module>spring-data-mongodb</module>
         <module>spring-date-mongo-repository</module>
+        <module>spring-jedis-demo</module>
     </modules>
 
     <properties>
