@@ -10,6 +10,7 @@
 - RedisTemplate
 - Repository的支持
 - Spring Cache
+- @RedisHash
 
 
 #### redis简介
@@ -85,8 +86,10 @@ RedisJta
 不是KEY，可以看看这个注解的注释，这里的value指的是The prefix to distinguish between domain types，
 其实是个前缀。明白了这点，你的第二个问题也解决了。
 
-#### @RedisHash设置过期时间
+#### @RedisHash
 RedisHash里加了timeToLive的
+
+https://blog.csdn.net/weixin_30263277/article/details/98513579
 
 #### Spring Cache
 

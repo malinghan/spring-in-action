@@ -26,6 +26,8 @@
         <module>spring-date-mongo-repository</module>
         <module>spring-jedis-demo</module>
         <module>spring-redis-lettuce</module>
+        <module>spring-data-redis-repository</module>
+        <module>spring-cache</module>
     </modules>
 
     <properties>
