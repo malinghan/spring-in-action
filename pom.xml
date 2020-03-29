@@ -28,6 +28,7 @@
         <module>spring-redis-lettuce</module>
         <module>spring-data-redis-repository</module>
         <module>spring-cache</module>
+        <module>simple-reactor-demo</module>
     </modules>
 
     <properties>
