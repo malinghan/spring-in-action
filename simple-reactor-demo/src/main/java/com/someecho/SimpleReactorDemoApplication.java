@@ -9,6 +9,14 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+/**
+ * 这是一个使用reactor的中和案例
+ *
+ * flux -> request -> publishOn ->
+ * complete1 -> operator ->
+ * complete2 -> subscribeOn ->
+ * onErrorResume -> subscribe
+ */
 @SpringBootApplication
 @Slf4j
 public class SimpleReactorDemoApplication implements ApplicationRunner {
@@ -21,7 +29,7 @@ public class SimpleReactorDemoApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		Flux.range(1, 6)
 				.doOnRequest(n -> log.info("Request {} number", n)) // 注意顺序造成的区别
-//				.publishOn(Schedulers.elastic())
+				.publishOn(Schedulers.elastic())
 				.doOnComplete(() -> log.info("Publisher COMPLETE 1"))
 				.map(i -> {
 					log.info("Publish {}, {}", Thread.currentThread(), i);
@@ -29,11 +37,11 @@ public class SimpleReactorDemoApplication implements ApplicationRunner {
 //					return i;
 				})
 				.doOnComplete(() -> log.info("Publisher COMPLETE 2"))
-//				.subscribeOn(Schedulers.single())
-//				.onErrorResume(e -> {
-//					log.error("Exception {}", e.toString());
-//					return Mono.just(-1);
-//				})
+				.subscribeOn(Schedulers.single())
+				.onErrorResume(e -> {
+					log.error("Exception {}", e.toString());
+					return Mono.just(-1);
+				})
 //				.onErrorReturn(-1)
 				.subscribe(i -> log.info("Subscribe {}: {}", Thread.currentThread(), i),
 						e -> log.error("error {}", e.toString()),

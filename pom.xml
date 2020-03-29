@@ -29,6 +29,8 @@
         <module>spring-data-redis-repository</module>
         <module>spring-cache</module>
         <module>simple-reactor-demo</module>
+        <module>spring-p6spy-datasource-aspect</module>
+        <module>spring-data-reactive</module>
     </modules>
 
     <properties>
