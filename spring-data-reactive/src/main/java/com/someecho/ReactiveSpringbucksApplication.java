@@ -32,6 +32,11 @@ public class ReactiveSpringbucksApplication extends AbstractR2dbcConfiguration {
         SpringApplication.run(ReactiveSpringbucksApplication.class, args);
     }
 
+
+    /**
+     * connectionFactory
+     * @return
+     */
     @Bean
     public ConnectionFactory connectionFactory() {
         return new H2ConnectionFactory(
@@ -41,6 +46,11 @@ public class ReactiveSpringbucksApplication extends AbstractR2dbcConfiguration {
                         .build());
     }
 
+
+    /**
+     * r2dbcCustomConversions
+     * @return
+     */
     @Bean
     public R2dbcCustomConversions r2dbcCustomConversions() {
         Dialect dialect = getDialect(connectionFactory());
@@ -50,6 +60,11 @@ public class ReactiveSpringbucksApplication extends AbstractR2dbcConfiguration {
                 Arrays.asList(new MoneyReadConverter(), new MoneyWriteConverter()));
     }
 
+    /**
+     * reactiveRedisTemplate
+     * @param factory
+     * @return
+     */
     @Bean
     public ReactiveRedisTemplate<String, Coffee> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
         StringRedisSerializer keySerializer = new StringRedisSerializer();

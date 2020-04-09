@@ -11,15 +11,24 @@ import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 
+
+/**
+ * 使用R2dbcRepository、ReactiveRedisTemplate
+ */
 @Service
 @Slf4j
 public class CoffeeService {
     private static final String PREFIX = "springbucks-";
     @Autowired
     private CoffeeRepository coffeeRepository;
+
     @Autowired
     private ReactiveRedisTemplate<String, Coffee> redisTemplate;
 
+    /**
+     * Flux
+     * @return
+     */
     public Flux<Boolean> initCache() {
         return coffeeRepository.findAll()
                 .flatMap(c -> redisTemplate.opsForValue()
@@ -28,6 +37,11 @@ public class CoffeeService {
                         .doOnSuccess(v -> log.info("Loading and caching {}", c)));
     }
 
+    /**
+     * Mono
+     * @param name
+     * @return
+     */
     public Mono<Coffee> findOneCoffee(String name) {
         return redisTemplate.opsForValue().get(PREFIX + name)
                 .switchIfEmpty(coffeeRepository.findByName(name)

@@ -24,6 +24,11 @@ public class SpringbucksRunner implements ApplicationRunner {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * 运行一个findOneCoffee
+     * @param args
+     * @throws Exception
+     */
     @Override
     public void run(ApplicationArguments args) throws Exception {
         coffeeService.initCache()

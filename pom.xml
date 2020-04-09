@@ -31,6 +31,9 @@
         <module>simple-reactor-demo</module>
         <module>spring-p6spy-datasource-aspect</module>
         <module>spring-data-reactive</module>
+        <module>spring-data-mongo-reactive</module>
+        <module>spring-mvc-demo</module>
+        <module>spring-web-mvc-json-view</module>
     </modules>
 
     <properties>
