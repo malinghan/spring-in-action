@@ -34,6 +34,7 @@
         <module>spring-data-mongo-reactive</module>
         <module>spring-mvc-demo</module>
         <module>spring-web-mvc-json-view</module>
+        <module>spring-boot-auto-configure-demo</module>
     </modules>
 
     <properties>

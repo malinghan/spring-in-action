@@ -1,6 +1,7 @@
 package com.someecho.spring.web.mvc;
 
 import org.junit.Test;
+import org.springframework.util.StopWatch;
 
 import java.io.*;
 import java.util.HashSet;
@@ -17,9 +18,11 @@ import java.util.regex.Pattern;
 public class MatchTest {
 
     public static void main(String[] args) throws Throwable{
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("aaa");
         Set<String> groupName = new HashSet<>();
-//        final String regex = "\\{#(\\S+?)\\}";
-        final String regex = "((\\{#(\\S+?)\\})|(\\(公司印章位置\\))|(\\(员工印章位置\\)))";
+        final String regex = "\\{#(\\S+?)\\}";
+//        final String regex = "((\\{#(\\S+?)\\})|(\\(公司印章位置\\))|(\\(员工印章位置\\)))";
         File file = new File("/Users/malinghan/IdeaProjects/spring-in-action/spring-web-mvc/src/test/java/com/someecho/spring/web/mvc/aaa.txt");
         InputStreamReader inputStreamReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -42,6 +45,8 @@ public class MatchTest {
         }
         System.out.println("============================");
         System.out.println(groupName);
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
     }
 
 
